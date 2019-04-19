@@ -15,7 +15,6 @@ import com.example.prince.multiscreen.R;
  */
 public class familyFragment extends Fragment {
 
-    TextView song_name;
     public familyFragment() {
         // Required empty public constructor
     }
@@ -26,8 +25,6 @@ public class familyFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.activity_family, container, false);
-      song_name=(TextView) rootView.findViewById(R.id.song_name);
-      song_name.setSelected(true);
         return rootView;
     }
 

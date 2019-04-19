@@ -7,6 +7,9 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+import android.widget.SeekBar;
+
+import com.example.prince.multiscreen.SeekbarProgress;
 
 import com.example.prince.multiscreen.Fragments.NumbersFragment;
 
@@ -16,6 +19,7 @@ public class MusicService extends Service
     public static AudioManager mAudioManager;
 
     public MusicService() {
+
     }
 
     @Override
@@ -56,14 +60,17 @@ public class MusicService extends Service
             // We have audio focus now.
 
             // Create and setup the {@link MediaPlayer} for the audio resource associated
-            // with the current word
+            // with the current list
                 if(NumbersFragment.songlist.getMaudioResourceId()==null)
                 {
                     onDestroy();
                 }
                 mMediaPlayer = MediaPlayer.create(MusicService.this, Uri.parse(NumbersFragment.songlist.getMaudioResourceId()));
+
                 mMediaPlayer.start();
-                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+
+
+            mMediaPlayer.setOnCompletionListener(mCompletionListener);
         }
 
     }
@@ -87,9 +94,9 @@ public class MusicService extends Service
                 // Pause playback and reset player to the start of the file. That way, we can
                 // play the word from the beginning when we resume playback.
                 mMediaPlayer.pause();
-                mMediaPlayer.seekTo(0);
+                mMediaPlayer.seekTo(mMediaPlayer.getCurrentPosition());
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
-                // The AUDIOFOCUS_GAIN case means we have regained focus and can resume playback.
+                // The AUDIOFOCUS_GAIN case means we have regained focus and can resume playbac
                 mMediaPlayer.start();
             } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                 // The AUDIOFOCUS_LOSS case means we've lost audio focus and
@@ -104,5 +111,6 @@ public class MusicService extends Service
         releaseMediaPlayer();
         super.onDestroy();
     }
+
 
 }

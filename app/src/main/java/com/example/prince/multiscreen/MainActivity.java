@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.app_bar_search) {
             return true;
         }
+        if(id==R.id.app_bar_exit){
+            finish();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
