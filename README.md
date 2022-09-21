@@ -1,6 +1,7 @@
 # MusicApp
-An Android App which basically  read music file from EXTERNALSTORAGE and plays.
-Not a complete music player(Incomplete UI).
-API's involved:- MediaPlayer ,AudioManager(with AudioFocus) and basic use of fragments.
-FUNCTIONALITY:-Plays Music (mp3) file.
+An Android Music player App with basic functionality
+  - read music file (mp3) from EXTERNAL STORAGE and play
+  - can skip, next, previous, pause and play
+Tech stack and packages:
+  - MediaPlayer ,AudioManager(with AudioFocus) and basic use of fragments, xml, java
 
